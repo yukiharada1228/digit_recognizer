@@ -3,6 +3,7 @@ kaggle
 matplotlib
 numpy
 pandas
+scikit-learn
 torch
 torchsummary
 torchvision

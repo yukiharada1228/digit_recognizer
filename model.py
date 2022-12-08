@@ -12,7 +12,16 @@ class MNISTResNet18(ResNet):
         self.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=1, padding=3, bias=False)
 
 
+class MNISTResNet34(ResNet):
+
+    def __init__(self):
+
+        # Based on ResNet34
+        super(MNISTResNet34, self).__init__(BasicBlock, [3, 4, 6, 3], num_classes=10)
+        self.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=1, padding=3, bias=False)
+
+
 if __name__ == '__main__':
 
-    model = MNISTResNet18()
+    model = MNISTResNet34()
     torchsummary.summary(model, input_size=(1, 28, 28))

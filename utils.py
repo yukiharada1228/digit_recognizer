@@ -3,9 +3,9 @@ import torch.nn as nn
 
 
 def train(model, device, train_loader, optimizer):
-  criterion = nn.CrossEntropyLoss()
-  model.train()
-  for data, target in train_loader:
+    criterion = nn.CrossEntropyLoss()
+    model.train()
+    for data, target in train_loader:
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
         output = model(data)
@@ -22,4 +22,4 @@ def test(model, device, test_loader):
             output = model(data)
             pred = torch.argmax(output, dim=1)
             correct += torch.sum(pred == target)
-    return 1 - correct / len(test_loader.dataset)
+    return (1 - correct / len(test_loader.dataset)).cpu().detach().numpy().copy()

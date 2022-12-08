@@ -1,29 +1,41 @@
+import logging
+
 import numpy as np
 import torch
 from torch.utils.data import Dataset
 
 
+logger = logging.getLogger(__name__)
+
 class MNISTDataset(Dataset):
     
     def __init__(self, dataframe, transform):
         
-        df = dataframe
+        self.df = dataframe
         
         channel = 1
         width = 28
         height = 28
         n_pixels = channel*width*height
 
-        if len(df.columns) == n_pixels:
-            # test
-            self.X = df.values.reshape(-1, 28, 28).astype(np.uint8)[..., np.newaxis]
-            self.y = None
+        if len(self.df.columns) == n_pixels:
+            self.X, self.y = self.test()
         else:
-            # train
-            self.X = df.drop('label', axis=1).values.reshape(-1, 28, 28).astype(np.uint8)[..., np.newaxis]
-            self.y = torch.from_numpy(df['label'].values)
+            self.X, self.y = self.train()
         
         self.tf = transform
+    
+    def train(self):
+        X = self.df.drop('label', axis=1).values.reshape(-1, 28, 28).astype(np.uint8)[..., np.newaxis]
+        y = torch.from_numpy(self.df['label'].values)
+        logger.debug({'action': 'train', 'X.shape': X.shape, 'y.size()': y.size()})
+        return X, y
+    
+    def test(self):
+        X = self.df.values.reshape(-1, 28, 28).astype(np.uint8)[..., np.newaxis]
+        y = None
+        logger.debug({'action': 'test', 'X.shape': X.shape, 'y': y})
+        return X, y
     
     def __len__(self):
         return len(self.X)
@@ -31,17 +43,29 @@ class MNISTDataset(Dataset):
     def __getitem__(self, idx):
         if self.y is None:
             # test
-            return self.tf(self.X[idx])
+            X = self.tf(self.X[idx])
+            logger.debug({'action': '__getitem__', 'X.size()': X.size()})
+            return X
         else:
             # train
-            return self.tf(self.X[idx]), self.y[idx]
+            X, y = self.tf(self.X[idx]), self.y[idx]
+            logger.debug({'action': '__getitem__', 
+                          'X.size()': X.size(),  
+                          'y.size()': y.size()})
+            return X, y
 
 
 if __name__ == '__main__':
 
+    import sys
+
     import pandas as pd
+    from torch.utils.data import DataLoader
     from torchvision import transforms
 
+
+    logging.basicConfig(level=logging.DEBUG, 
+                        stream=sys.stdout)
 
     train_df = pd.read_csv('./train.csv')
     test_df = pd.read_csv('./test.csv')
@@ -52,10 +76,11 @@ if __name__ == '__main__':
     train = MNISTDataset(train_df, transform=transform)
     test = MNISTDataset(test_df, transform=transform)
 
-    X, y = next(iter(train))
-    print('train')
-    print(X)
-    print(y)
-    X = next(iter(test))
-    print('test')
-    print(X)
+    batch_size = 3
+    train_loader = DataLoader(train, batch_size=batch_size, shuffle=True)
+    test_loader = DataLoader(test, batch_size=batch_size, shuffle=False)
+
+    X, y = next(iter(train_loader))
+    logger.debug({'X': X.size(), 'y': y.size()})
+    X = next(iter(test_loader))
+    logger.debug({'X': X.size()})

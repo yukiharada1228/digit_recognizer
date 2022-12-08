@@ -3,6 +3,7 @@ import logging
 import numpy as np
 import torch
 from torch.utils.data import Dataset
+from torchvision import transforms
 
 
 logger = logging.getLogger(__name__)
@@ -10,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class MNISTDataset(Dataset):
 
-    def __init__(self, dataframe, transform):
+    def __init__(self, dataframe, transform=transforms.ToTensor()):
 
         self.df = dataframe
 
@@ -65,7 +66,6 @@ if __name__ == '__main__':
 
     import pandas as pd
     from torch.utils.data import DataLoader
-    from torchvision import transforms
 
     logging.basicConfig(level=logging.DEBUG,
                         stream=sys.stdout)
@@ -73,11 +73,8 @@ if __name__ == '__main__':
     train_df = pd.read_csv('./train.csv')
     test_df = pd.read_csv('./test.csv')
 
-    transform = transforms.Compose([transforms.ToPILImage(),
-                                    transforms.ToTensor()])
-
-    train = MNISTDataset(train_df, transform=transform)
-    test = MNISTDataset(test_df, transform=transform)
+    train = MNISTDataset(train_df)
+    test = MNISTDataset(test_df)
 
     batch_size = 3
     train_loader = DataLoader(train, batch_size=batch_size, shuffle=True)

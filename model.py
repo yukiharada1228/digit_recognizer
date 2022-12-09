@@ -1,5 +1,5 @@
 import torch.nn as nn
-from torchvision.models.resnet import ResNet, BasicBlock
+from torchvision.models.resnet import ResNet, BasicBlock, Bottleneck
 import torchsummary
 
 
@@ -21,7 +21,15 @@ class MNISTResNet34(ResNet):
         self.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=1, padding=3, bias=False)
 
 
+class MNISTResNet50(ResNet):
+    def __init__(self):
+        
+        # Based on ResNet50
+        super(MNISTResNet50, self).__init__(Bottleneck, [3, 4, 6, 3], num_classes=10)
+        self.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=1, padding=3,bias=False)
+
+
 if __name__ == '__main__':
 
-    model = MNISTResNet34()
+    model = MNISTResNet50()
     torchsummary.summary(model, input_size=(1, 28, 28))

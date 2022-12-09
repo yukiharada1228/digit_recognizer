@@ -6,9 +6,12 @@
 3. [ResNet34を学習](resnet34/train_resnet34.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet34/train_resnet34.ipynb)<br>
 <img src="resnet34/resnet34_learning_curve.png" width="320"/><br>
 [train_resnet34.log](resnet34/train_resnet34.log)
-4. [ResNet50を学習](resnet50/train_resnet50.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet50/train_resnet50.ipynb)<br>
+4. [ResNet34をAdamで学習](resnet34/train_resnet34_adam.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet34/train_resnet34_adam.ipynb)<br>
+<img src="resnet34/resnet34_adam_learning_curve.png" width="320"/><br>
+[train_resnet34_adam.log](resnet34/train_resnet34_adam.log)
+5. [ResNet50を学習](resnet50/train_resnet50.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet50/train_resnet50.ipynb)<br>
 <img src="resnet50/resnet50_learning_curve.png" width="320"/><br>
 [train_resnet50.log](resnet50/train_resnet50.log)
-4. [AdamでResNet50を学習](resnet50/train_resnet50_adam.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet50/train_resnet50_adam.ipynb)<br>
+6. [AdamでResNet50を学習](resnet50/train_resnet50_adam.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet50/train_resnet50_adam.ipynb)<br>
 <img src="resnet50/resnet50_Adam_learning_curve.png" width="320"/><br>
 [train_resnet50_adam.log](resnet50/train_resnet50_adam.log)

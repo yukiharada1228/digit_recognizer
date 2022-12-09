@@ -14,7 +14,7 @@
 <img src="resnet34/resnet34_adam_learning_curve.png" width="320"/><br>
 [train_resnet34_adam.log](resnet34/train_resnet34_adam.log)
 3. [Adam + DataAugmentation](resnet34/train_resnet34_adam_data_augmentation.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet34/train_resnet34_adam_data_augmentation.ipynb)<br>
-<img src="resnet34/train_resnet34_adam_data_augmentation_learning_curve.png" width="320"/><br>
+<img src="resnet34/resnet34_data_augmentation_learning_curve.png" width="320"/><br>
 [train_resnet34_adam_data_augmentation.log](resnet34/train_resnet34_adam_data_augmentation.log)
 ### ResNet50
 1. [Momentum](resnet50/train_resnet50.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet50/train_resnet50.ipynb)<br>

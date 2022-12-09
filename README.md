@@ -4,3 +4,5 @@
 <img src="resnet18_learning_curve.png" width="320"/><br>
 [train_resnet18.log](train_resnet18.log)
 3. [ResNet34で学習](train_resnet34.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/train_resnet34.ipynb)<br>
+<img src="resnet34_learning_curve.png" width="320"/><br>
+[train_resnet34.log](train_resnet34.log)

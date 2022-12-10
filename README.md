@@ -1,6 +1,6 @@
 # [digit-recognizer](https://www.kaggle.com/c/digit-recognizer)
 ## Data
-1. [データの可視化](visualize.ipynb)
+1. [Visualization](visualize.ipynb)
 ## Train
 ### ResNet18
 1. [Momentum](resnet18/train_resnet18.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet18/train_resnet18.ipynb)<br>

@@ -1,7 +1,7 @@
 # [digit-recognizer](https://www.kaggle.com/c/digit-recognizer)
-## データ
+## Data
 1. [データの可視化](visualize.ipynb)
-## 学習
+## Train
 ### ResNet18
 1. [Momentum](resnet18/train_resnet18.ipynb) [![Open In Collab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yukiharada1228/digit_recognizer/blob/main/resnet18/train_resnet18.ipynb)<br>
 <img src="resnet18/resnet18_learning_curve.png" width="320"/><br>
